@@ -11,6 +11,9 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  message_generation
+  actionlib
+  actionlib_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -47,31 +50,29 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  DIRECTORY msg
+  FILES MyMessage.msg
+)
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  DIRECTORY srv
+  FILES MyServiceMsg.srv
+)
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+add_action_files(
+  DIRECTORY action
+  FILES MyAction.action
+)
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs
-# )
+generate_messages(
+  DEPENDENCIES 
+  actionlib_msgs
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -105,7 +106,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES hello_ros
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+ CATKIN_DEPENDS roscpp rospy std_msgs message_runtime actionlib actionlib_msgs
 #  DEPENDS system_lib
 )
 
@@ -210,3 +211,45 @@ target_link_libraries(talker_cpp ${catkin_LIBRARIES})
 
 add_executable(listener_cpp src/listener.cpp)
 target_link_libraries(listener_cpp ${catkin_LIBRARIES})
+
+add_executable(msg_publisher_node src/msg_publisher.cpp)
+target_link_libraries(msg_publisher_node ${catkin_LIBRARIES})
+add_dependencies(msg_publisher_node
+  ${${PROJECT_NAME}_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
+)
+
+add_executable(msg_subscriber_node src/msg_subscriber.cpp)
+target_link_libraries(msg_subscriber_node ${catkin_LIBRARIES})
+add_dependencies(msg_subscriber_node
+  ${${PROJECT_NAME}_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
+)
+
+add_executable(ros_server_node src/ros_server.cpp)
+target_link_libraries(ros_server_node ${catkin_LIBRARIES})
+add_dependencies(ros_server_node
+  ${${PROJECT_NAME}_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
+)
+
+add_executable(ros_client_node src/ros_client.cpp)
+target_link_libraries(ros_client_node ${catkin_LIBRARIES})
+add_dependencies(ros_client_node
+  ${${PROJECT_NAME}_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
+)
+
+add_executable(ros_action_server src/ros_action_server.cpp)
+target_link_libraries(ros_action_server ${catkin_LIBRARIES})
+add_dependencies(ros_action_server
+  ${${PROJECT_NAME}_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
+)
+
+add_executable(ros_action_client src/ros_action_client.cpp)
+target_link_libraries(ros_action_client ${catkin_LIBRARIES})
+add_dependencies(ros_action_client
+  ${${PROJECT_NAME}_EXPORTED_TARGETS}
+  ${catkin_EXPORTED_TARGETS}
+)

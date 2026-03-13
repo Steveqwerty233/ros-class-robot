@@ -1,0 +1,7 @@
+<launch>
+    <!-- 启动 publisher 节点 -->
+    <node name="hello_cpp_publisher" pkg="hello_ros" type="talker_cpp" output="screen" />
+    
+    <!-- 启动 subscriber 节点 -->
+    <node name="hello_cpp_listener" pkg="hello_ros" type="listener_cpp" output="screen" />
+</launch>
