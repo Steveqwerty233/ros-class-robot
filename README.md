@@ -33,3 +33,10 @@ roslaunch upros_bringup bringup_w2a.launch
 
 rosrun square_move square_move
 
+=================== sensors
+
+rosrun sensors bump_react_node
+
+rosrun sensors front_tof_avoid
+
+rosrun sensors imu_turn_180
