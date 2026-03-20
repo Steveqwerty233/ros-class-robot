@@ -1,6 +1,7 @@
 # ros-class-robot
 
 =================== hello ros
+source ~/lzr_ros_class_ws/devel/setup.bash
 
 roscore
 

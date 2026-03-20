@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     const double obstacle_threshold = 0.4;   // 触发后退的距离阈值
     const double forward_speed = 0.08;       // 缓慢前进
     const double backward_speed = -0.12;     // 开环后退速度
-    const double backward_distance = 0.2;    // 希望后退 0.2m
+    const double backward_distance = 0.5;    // 希望后退 0.5m
     const double backward_time = backward_distance / 0.12;  // t = s / v
     // ================
 
