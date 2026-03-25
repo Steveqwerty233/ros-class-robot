@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   actionlib
   actionlib_msgs
+  dynamic_reconfigure
 )
 
 ## System dependencies are found with CMake's conventions
@@ -103,6 +104,11 @@ generate_messages(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
+
+generate_dynamic_reconfigure_options(
+  cfg/Tutorials.cfg
+)
+
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES hello_ros
@@ -253,3 +259,14 @@ add_dependencies(ros_action_client
   ${${PROJECT_NAME}_EXPORTED_TARGETS}
   ${catkin_EXPORTED_TARGETS}
 )
+
+add_executable(ros_param src/ros_param.cpp) 
+target_link_libraries(ros_param ${catkin_LIBRARIES})
+
+add_executable(dynamic_reconfigure_node src/dynamic_reconfigure.cpp)
+target_link_libraries(dynamic_reconfigure_node ${catkin_LIBRARIES})
+add_dependencies(dynamic_reconfigure_node ${PROJECT_NAME}_gencfg)
+
+add_executable(ros_dynamic_speed_node src/ros_dynamic_speed.cpp)
+target_link_libraries(ros_dynamic_speed_node ${catkin_LIBRARIES})
+add_dependencies(ros_dynamic_speed_node ${PROJECT_NAME}_gencfg)
