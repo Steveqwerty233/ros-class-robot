@@ -55,3 +55,16 @@ rosrun sensors bump_react_node
 rosrun sensors front_tof_avoid
 
 rosrun sensors imu_turn_180
+
+=================== urdf and gazebo
+
+roslaunch lzr_robot_description display.launch // rviz
+
+roslaunch lzr_robot_description gazebo.launch //gazebo
+
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+
+roslaunch lzr_robot_description arm_only_gazebo.launch // robot arm
+
+rosrun lzr_robot_description arm_demo.py
+

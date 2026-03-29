@@ -1,0 +1,22 @@
+<launch>
+
+  <!-- 加载xacro -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro $(find lzr_robot_description)/urdf/simple_robot.xacro"/>
+
+  <!-- 关节状态发布 -->
+  <node name="joint_state_publisher"
+        pkg="joint_state_publisher"
+        type="joint_state_publisher"/>
+
+  <!-- TF发布 -->
+  <node name="robot_state_publisher"
+        pkg="robot_state_publisher"
+        type="robot_state_publisher"/>
+
+  <!-- RViz -->
+  <node name="rviz"
+        pkg="rviz"
+        type="rviz"/>
+
+</launch>
