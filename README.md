@@ -2,6 +2,7 @@
 
 =================== hello ros
 source ~/lzr_ros_class_ws/devel/setup.bash
+rsync -avzP bcsh@192.168.1.140:/home/bcsh/lzr_ros_class_ws/src/camera_and_arm/ /home/steve/lzr_ros_class_ws/src
 
 roscore
 
@@ -67,4 +68,25 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 roslaunch lzr_robot_description arm_only_gazebo.launch // robot arm
 
 rosrun lzr_robot_description arm_demo.py
+
+=================== camera and arm
+source ~/lzr_ros_class_ws/devel/setup.bash
+roslaunch upros_bringup bringup_w2a.launch
+
+rosrun rqt_image_view rqt_image_view
+
+rosrun camera_and_arm get_ros_image.py
+
+rosrun upros_cv color_choose.py
+
+rosrun camera_and_arm follow_line.py
+rostopic pub -1 /enable_move std_msgs/Int16 "data: 1"
+
+rosrun camera_and_arm gesture_movement.py
+
+rosrun camera_and_arm apriltag_follow.py
+
+roslaunch upros_arm recognize_apriltag.launch
+rosrun camera_and_arm tag_grab_node
+
 
