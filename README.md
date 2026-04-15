@@ -4,6 +4,10 @@
 source ~/lzr_ros_class_ws/devel/setup.bash
 rsync -avzP bcsh@192.168.1.140:/home/bcsh/lzr_ros_class_ws/src/camera_and_arm/ /home/steve/lzr_ros_class_ws/src
 
+rsync -avzP bcsh@192.168.137.172:/home/bcsh/lzr_ros_class_ws/src/slam_and_nav/ /home/steve/lzr_ros_class_ws/src/slam_and_nav/
+
+ssh bcsh@172.20.10.9
+
 roscore
 
 rosrun hello_ros talker_cpp
@@ -88,5 +92,26 @@ rosrun camera_and_arm apriltag_follow.py
 
 roslaunch upros_arm recognize_apriltag.launch
 rosrun camera_and_arm tag_grab_node
+
+=================== slam and nav
+
+roslaunch upros_bringup bringup_w2a.launch
+
+rosrun slam_and_nav ros_imu_node
+rosrun slam_and_nav ros_imu_rotate_node
+
+rosrun slam_and_nav ros_scan_node
+
+rosrun slam_and_nav ros_avoid_node
+
+roslaunch upros_navigation gmapping.launch
+roslaunch upros_navigation view_nav.launch
+rosrun upros_move_linear teleop_twist_keyboard.py
+rosrun upros_transform tf_echo_node
+roslaunch upros_navigation save_map.launch
+
+roslaunch upros_navigation navigation.launch
+roslaunch upros_navigation view_nav.launch
+rosrun slam_and_nav movebase_client_node
 
 
