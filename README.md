@@ -1,6 +1,6 @@
 # ros-class-robot
 
-=================== hello ros
+=================== week1-2 hello ros
 source ~/lzr_ros_class_ws/devel/setup.bash
 rsync -avzP bcsh@192.168.1.140:/home/bcsh/lzr_ros_class_ws/src/camera_and_arm/ /home/steve/lzr_ros_class_ws/src
 
@@ -45,7 +45,7 @@ rosrun rqt_reconfigure rqt_reconfigure
 rosrun hello_ros ros_dynamic_speed_node
 
 
-=================== 1x1 square
+=================== week1-2 1x1 square
 
 roslaunch upros_bringup bringup_w2a.launch
 
@@ -53,7 +53,7 @@ rosrun square_move square_move
 
 rosrun hello_ros ros_dynamic_speed_node
 
-=================== sensors
+=================== week3 sensors
 
 rosrun sensors bump_react_node
 
@@ -61,7 +61,7 @@ rosrun sensors front_tof_avoid
 
 rosrun sensors imu_turn_180
 
-=================== urdf and gazebo
+=================== week4 urdf and gazebo
 
 roslaunch lzr_robot_description display.launch // rviz
 
@@ -73,7 +73,7 @@ roslaunch lzr_robot_description arm_only_gazebo.launch // robot arm
 
 rosrun lzr_robot_description arm_demo.py
 
-=================== camera and arm
+=================== week5 camera and arm
 source ~/lzr_ros_class_ws/devel/setup.bash
 roslaunch upros_bringup bringup_w2a.launch
 
@@ -93,7 +93,7 @@ rosrun camera_and_arm apriltag_follow.py
 roslaunch upros_arm recognize_apriltag.launch
 rosrun camera_and_arm tag_grab_node
 
-=================== slam and nav
+=================== week6 slam and nav
 
 roslaunch upros_bringup bringup_w2a.launch
 
