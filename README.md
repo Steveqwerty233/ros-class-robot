@@ -4,7 +4,7 @@
 source ~/lzr_ros_class_ws/devel/setup.bash
 rsync -avzP bcsh@192.168.1.140:/home/bcsh/lzr_ros_class_ws/src/camera_and_arm/ /home/steve/lzr_ros_class_ws/src
 
-rsync -avzP bcsh@192.168.137.172:/home/bcsh/lzr_ros_class_ws/src/slam_and_nav/ /home/steve/lzr_ros_class_ws/src/slam_and_nav/
+rsync -avzP bcsh@192.168.137.172:/home/bcsh/lzr_ros_class_ws/src/voice_pkg/ /home/steve/lzr_ros_class_ws/src/voice_pkg/
 
 ssh bcsh@172.20.10.9
 
@@ -113,5 +113,15 @@ roslaunch upros_navigation save_map.launch
 roslaunch upros_navigation navigation.launch
 roslaunch upros_navigation view_nav.launch
 rosrun slam_and_nav movebase_client_node
+
+=================== week7 voice coltrol
+
+rosrun voice_pkg llm_chat.py
+
+roslaunch upros_bringup bringup_w2a.launch
+roslaunch upros_chat speech_to_word.launch
+roslaunch upros_arm recognize_apriltag.launch
+rosrun voice_pkg voice_control.py
+rosrun voice_pkg tag_grab_node
 
 
