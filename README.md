@@ -1,10 +1,10 @@
 # ros-class-robot
 
 =================== week1-2 hello ros
-source ~/lzr_ros_class_ws/devel/setup.bash
-rsync -avzP bcsh@192.168.1.140:/home/bcsh/lzr_ros_class_ws/src/camera_and_arm/ /home/steve/lzr_ros_class_ws/src
 
-rsync -avzP bcsh@192.168.137.172:/home/bcsh/lzr_ros_class_ws/src/voice_pkg/ /home/steve/lzr_ros_class_ws/src/voice_pkg/
+source ~/lzr_ros_class_ws/devel/setup.bash
+
+rsync -avzP bcsh@192.168.137.107:/home/bcsh/lzr_ros_class_ws/src/voice_pkg/ /home/steve/lzr_ros_class_ws/src/voice_pkg/
 
 ssh bcsh@172.20.10.9
 
@@ -74,6 +74,7 @@ roslaunch lzr_robot_description arm_only_gazebo.launch // robot arm
 rosrun lzr_robot_description arm_demo.py
 
 =================== week5 camera and arm
+
 source ~/lzr_ros_class_ws/devel/setup.bash
 roslaunch upros_bringup bringup_w2a.launch
 
@@ -116,12 +117,18 @@ rosrun slam_and_nav movebase_client_node
 
 =================== week7 voice coltrol
 
+source ~/lzr_ros_class_ws/devel/setup.bash
+roslaunch upros_bringup bringup_w2a.launch
+
+roslaunch upros_chat speech_to_word.launch
+roslaunch upros_chat word_to_speech.launch
 rosrun voice_pkg llm_chat.py
 
-roslaunch upros_bringup bringup_w2a.launch
-roslaunch upros_chat speech_to_word.launch
-roslaunch upros_arm recognize_apriltag.launch
 rosrun voice_pkg voice_control.py
+roslaunch upros_arm recognize_apriltag.launch
 rosrun voice_pkg tag_grab_node
+
+roslaunch upros_navigation navigation.launch
+rosrun slam_and_nav voice_nav_node
 
 
