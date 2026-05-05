@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="mission_manager"
+          type="mission_manager_node.py"
+          name="mission_manager_node"
+          output="screen">
+        <rosparam file="$(find mission_manager)/config/mission_points.yaml" command="load" />
+    </node>
+</launch>

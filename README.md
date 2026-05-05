@@ -6,6 +6,8 @@ source ~/lzr_ros_class_ws/devel/setup.bash
 
 rsync -avzP bcsh@192.168.137.107:/home/bcsh/lzr_ros_class_ws/src/voice_pkg/ /home/steve/lzr_ros_class_ws/src/voice_pkg/
 
+rsync -avzP /home/steve/lzr_ros_class_ws/src/mission_manager/ bcsh@192.168.137.107:/home/bcsh/lzr_ros_class_ws/src/mission_manager/
+
 ssh bcsh@172.20.10.9
 
 roscore
@@ -131,4 +133,13 @@ rosrun voice_pkg tag_grab_node
 roslaunch upros_navigation navigation.launch
 rosrun slam_and_nav voice_nav_node
 
+=================== final mission
+source ~/lzr_ros_class_ws/devel/setup.bash
+roslaunch upros_bringup bringup_w2a.launch
+
+roslaunch upros_chat word_to_speech.launch
+roslaunch upros_navigation navigation.launch
+
+roslaunch camera_and_arm apriltag_detector.launch
+roslaunch mission_manager mission_manager.launch
 

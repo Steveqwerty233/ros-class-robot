@@ -1,0 +1,20 @@
+move_base_action: "/move_base"
+
+goal_timeout: 45.0
+retry_count: 1
+
+detect_duration: 3.0
+
+detection_topic: "/target_found"
+talk_topic: "/talk"
+
+waypoints:
+  room1: [1.906642, 0.891201, 1.662019]
+  room1_backup: [1.75, 1.05, 1.662019]
+
+  room2: [1.754616, 3.843917, -1.327738]
+  room2_backup: [1.60, 3.60, -1.327738]
+
+  return_mid: [0.812875, 2.259125, 3.032147]
+
+  home: [0.040152, 2.363355, 3.037373]

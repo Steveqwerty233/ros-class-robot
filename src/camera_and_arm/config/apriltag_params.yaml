@@ -1,0 +1,11 @@
+apriltag_detector_node:
+  image_topic: "/camera/color/image_raw"
+
+  # 可视化输出
+  result_image_topic: "/image_result"
+
+  # 给总控用的识别结果
+  target_found_topic: "/target_found"
+
+  # 目标 AprilTag ID（默认就是你代码里写的 1）
+  target_tag_id: 1

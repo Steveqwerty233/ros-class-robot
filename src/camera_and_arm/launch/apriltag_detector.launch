@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="camera_and_arm"
+          type="apriltag_detector_node.py"
+          name="apriltag_detector_node"
+          output="screen">
+        <rosparam file="$(find camera_and_arm)/config/apriltag_params.yaml" command="load" />
+    </node>
+</launch>
