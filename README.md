@@ -142,4 +142,9 @@ roslaunch upros_navigation navigation.launch
 
 roslaunch camera_and_arm apriltag_detector.launch
 roslaunch mission_manager mission_manager.launch
+--------
+source ~/lzr_ros_class_ws/devel/setup.bash
+roslaunch mission_bringup full_mission.launch
+roslaunch mission_manager mission_manager.launch
+--------
 

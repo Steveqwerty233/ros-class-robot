@@ -1,0 +1,15 @@
+<launch>
+
+    <!-- 1. 底盘、雷达、IMU、相机、机械臂等硬件 bringup -->
+    <include file="$(find upros_bringup)/launch/bringup_w2a.launch" />
+
+    <!-- 2. 语音播放节点 -->
+    <include file="$(find upros_chat)/launch/word_to_speech.launch" />
+
+    <!-- 3. 地图、定位、move_base 导航 -->
+    <include file="$(find upros_navigation)/launch/navigation.launch" />
+
+    <!-- 4. AprilTag 识别节点 -->
+    <include file="$(find camera_and_arm)/launch/apriltag_detector.launch" />
+
+</launch>

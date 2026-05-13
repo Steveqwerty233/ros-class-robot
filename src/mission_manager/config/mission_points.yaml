@@ -3,18 +3,18 @@ move_base_action: "/move_base"
 goal_timeout: 45.0
 retry_count: 1
 
-detect_duration: 3.0
+detect_duration: 0.3
 
 detection_topic: "/target_found"
 talk_topic: "/talk"
 
 waypoints:
-  room1: [1.906642, 0.891201, 1.662019]
-  room1_backup: [1.75, 1.05, 1.662019]
+  room1: [2.198102, 1.181245, 1.341628]
+  room1_backup: [2.00, 1.05, 1.341628]
 
-  room2: [1.754616, 3.843917, -1.327738]
-  room2_backup: [1.60, 3.60, -1.327738]
+  room2: [2.175849, 3.592217, -1.344992]
+  room2_backup: [2.30, 3.55, -1.404992]
 
-  return_mid: [0.812875, 2.259125, 3.032147]
+  return_mid: [1.046907, 3.100010, -2.860535]
 
-  home: [0.040152, 2.363355, 3.037373]
+  home: [-0.579100, 2.600004, -2.884836]

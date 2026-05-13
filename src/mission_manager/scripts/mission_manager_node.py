@@ -16,7 +16,7 @@ class MissionManager:
         self.move_base_action = rospy.get_param("~move_base_action", "/move_base")
         self.goal_timeout = rospy.get_param("~goal_timeout", 45.0)
         self.retry_count = rospy.get_param("~retry_count", 1)
-        self.detect_duration = rospy.get_param("~detect_duration", 3.0)
+        self.detect_duration = rospy.get_param("~detect_duration", 1.0)
 
         self.detection_topic = rospy.get_param("~detection_topic", "/target_found")
         self.talk_topic = rospy.get_param("~talk_topic", "/talk")
@@ -37,8 +37,6 @@ class MissionManager:
         rospy.loginfo("Waiting for move_base action server...")
         self.client.wait_for_server()
         rospy.loginfo("move_base connected.")
-
-        rospy.sleep(0.5)
 
     def detection_callback(self, msg):
         self.detect_total_count += 1
@@ -78,7 +76,6 @@ class MissionManager:
         msg.data = text
         self.talk_pub.publish(msg)
         rospy.loginfo("Speak: %s", text)
-        rospy.sleep(1.0)
 
     def goto_waypoint(self, name):
         if name not in self.waypoints:
